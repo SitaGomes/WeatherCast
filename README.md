@@ -1,4 +1,4 @@
-# Climatiza
+# WeatherCast
 
 ## :gear: Features
 - [ ] Search the weather by the city's name;
