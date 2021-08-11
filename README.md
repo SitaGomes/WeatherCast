@@ -1,10 +1,10 @@
 # Climatiza
 
-# :gear: Funcionalidades
-- [] Procura o clima pelo nome da cidade;
-- [] Mostra o clima do dia;
-- [] Mostra o clima dos proximos dias;
-- [] Mostra o clima dos dias anteriores. 
+# :gear: Features
+- [ ] Search the weather by the city's name;
+- [ ] Show the city's weather;
+- [ ] Show nex day's weather;
+- [ ] Show humidity, wind pressure, cloud porcentage, etc. 
 
 ## :computer: Instalation
 ```bash
@@ -20,7 +20,7 @@ $ npm start
 
 ## :raising_hand_man: Author
 
-Criado por ✌ Arthur Gomes, bora bater um papo!
+Created by ✌ Arthur Gomes, let's chat!
 
 <a href="https://www.linkedin.com/in/arthur-sita-gomes-3683221b3/">
     <img src="https://pt.pngtree.com/so/ícones-linkedin"/>
