@@ -1,6 +1,6 @@
 # Climatiza
 
-# :tool: Funcionalidades
+# :gear: Funcionalidades
 - [] Procura o clima pelo nome da cidade;
 - [] Mostra o clima do dia;
 - [] Mostra o clima dos proximos dias;
@@ -18,7 +18,7 @@ $ npm start
 
 ```
 
-## :waving-hands: Author
+## :raising_hand_man: Author
 
 Criado por ✌ Arthur Gomes, bora bater um papo!
 
