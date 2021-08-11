@@ -1,6 +1,6 @@
 # Climatiza
 
-# :gear: Features
+## :gear: Features
 - [ ] Search the weather by the city's name;
 - [ ] Show the city's weather;
 - [ ] Show nex day's weather;
