@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+
+
 export const HomeContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -8,6 +10,7 @@ export const HomeContainer = styled.div`
     width: 100vw;
 `
 
+//! Main Section
 export const TempContainer = styled.main`
     text-align: center;
     flex: 1;
@@ -37,11 +40,39 @@ export const NormalTemp = styled.div`
 
 `
 
+//! Aside Section
 export const AsideContainer = styled.aside`
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
+    margin: 20px 2rem;
+
+`
+
+export const FormContainer = styled.form`
+    background: none;
+    border: none;
+
+    border-bottom: 1px solid #8A8A8A;
+    text-align: center;
+
+    margin: 0px 1rem;
+
+`
+
+export const SearchCity = styled.input`
+    border: none;
+    background: none;
+
+    text-align: center;
 
 
 `
+export const SearchButton = styled.button`
+    border: none;
+    background: none;
+
+    width: 12px;
+
+`
+
