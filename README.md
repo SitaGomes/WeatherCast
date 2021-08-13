@@ -10,7 +10,7 @@
 ```bash
 $ git clone http://github.com/SitaGomes/climatiza
 
-$ cd climatiza
+$ cd WeatherCast
 
 $ npm install
 
