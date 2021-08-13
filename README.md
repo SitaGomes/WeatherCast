@@ -8,7 +8,7 @@
 
 ## :computer: Instalation
 ```bash
-$ git clone http://github.com/SitaGomes/climatiza
+$ git clone http://github.com/SitaGomes/WeatherCast
 
 $ cd WeatherCast
 
