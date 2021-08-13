@@ -6,31 +6,24 @@ import {
   AsideContainer,
   NormalTemp,
   TempContainer,
-  TempInformation
+  TempInformation,
+  SearchCity,
+  FormContainer,
+  SearchButton
 } from "./Styles"
 
 import {
   Weather
 } from "../../Types/Interfaces"
 
+import MapICon from "../../Assets/SVG/MapIcon.svg"
+
 var axios = require("axios").default;
 
-const CitiesOptions = {
-  method: 'GET',
-  url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities',
-  headers: {
-    'x-rapidapi-key': '9ee2a2d7eamshe86b9bb88e0be56p1da44djsn48f0509e062e',
-    'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
-  }
-};
-
-axios.request(CitiesOptions).then(function (response: any) {
-	console.log(response.data);
-}).catch(function (error: string) {
-	console.error(error);
-});
 
 export function Home() {
+
+  const [wrongCityName, setWrongCityName] = useState(false)
 
   const [loading, setLoading] = useState(true)
   
@@ -42,8 +35,9 @@ export function Home() {
   const [normalTemp, setNormalTemp] = useState(0)
 
 
-  function changeName(e: FormEvent) {
+  async function changeName(e: FormEvent) {
     e.preventDefault()
+    setLoading(true)
 
     if (searchName.trim === undefined) return
 
@@ -68,15 +62,27 @@ export function Home() {
 
     const getWeather = async () => {
 
-      const { data }: Weather = await axios.request(options)
+      try{
+        const { data }: Weather = await axios.request(options)
+        
+        setLoading(false)
+        setWrongCityName(false) //! Return Default state 
+  
+        setMaxTemp(Math.floor(data.main.temp_max - 273.15))
+  
+        setMinTemp(Math.floor(data.main.temp_min - 273.15))
+  
+        setNormalTemp(Math.floor(data.main.temp - 273.15))
+  
+        console.log(data.main)
+      
+      } catch (err) {
 
-      setMaxTemp(Math.floor(data.main.temp_max - 273.15))
+        setLoading(false)
+        setWrongCityName(true)
+      
+      }
 
-      setMinTemp(Math.floor(data.main.temp_min - 273.15))
-
-      setNormalTemp(Math.floor(data.main.temp - 273.15))
-
-      console.log(data.main)
 
     }
 
@@ -88,42 +94,63 @@ export function Home() {
   return (
     <HomeContainer>
       {/* Today's weather conditions */}
-      <TempContainer>
+      <TempContainer> 
+        {
+          loading ? (
+            <>
+              <h1>Loading...</h1>
+            </>
+          ) : (
+            <>
+              
+              {wrongCityName ? (
+                <>
+                  <h1>City not found</h1>
+                </>
+              ): (
+                <>
+                  {/* City's name */}
+                  <h3 className="roboto">{cityName} | HOJE</h3>
 
-        {/* City's name */}
-        <h3 className="roboto">{cityName} | HOJE</h3>
+                  {/* Min, Normal, Max temperature */}
+                  <TempInformation>
 
-        {/* Min, Normal, Max temperature */}
-        <TempInformation>
-        
-          {/* Min */}
-          <MinMaxTemp>{ minTemp }ºC</MinMaxTemp>
+                    {/* Min */}
+                    <MinMaxTemp>{ minTemp }ºC</MinMaxTemp>
 
-          {/* Normal */}
-          <NormalTemp className="roboto">{ normalTemp }ºC</NormalTemp>
+                    {/* Normal */}
+                    <NormalTemp className="roboto">{ normalTemp }ºC</NormalTemp>
 
-          {/* Max */}
-          <MinMaxTemp>{ maxTemp }ºC</MinMaxTemp>
-        
-        </TempInformation>
+                    {/* Max */}
+                    <MinMaxTemp>{ maxTemp }ºC</MinMaxTemp>
 
+                  </TempInformation>
+                </>
+              )}
+
+            </>
+          )
+        }
       </TempContainer>
     
       {/* Extra content */}
       <AsideContainer>
 
         {/* Search city's name */}
-        <form
+        <FormContainer
           onSubmit={(e) => changeName(e)}
         >
-          <input 
+          <SearchCity 
             type="text" 
             placeholder="city's name" 
             onChange={(e) => setSearchName(e.target.value)}
           
           />
-          <button>Aqui</button>
-        </form>
+          <SearchButton>
+            <img src={MapICon} alt="search for cities name" />
+          </SearchButton>
+          
+        </FormContainer>
 
         {/* Recent searched city's */}
         <div></div>
