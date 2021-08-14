@@ -1,6 +1,10 @@
+import { ReactChild } from "react";
+
 export interface Weather {
     data: {
-
+        clouds:{
+            all: number
+        },
         main: {
             humidity: number;
             pressure: number;
@@ -22,4 +26,16 @@ export interface Weather {
         }
     }
 
+}
+
+export interface ExtraWeatherContent {
+    feels_like: number,
+    pressure: number,
+    cloudiness?: number, 
+    weather_condition: string,
+    wind_speed: number,
+}
+
+export interface ChildrenProps {
+    children: ReactChild
 }

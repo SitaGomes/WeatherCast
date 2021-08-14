@@ -45,15 +45,14 @@ export const AsideContainer = styled.aside`
     display: flex;
     flex-direction: column;
 
-    margin: 20px 2rem;
-
+    width: 320px;
+    margin: 20px 1rem;
 `
 
 export const FormContainer = styled.form`
     background: none;
     border: none;
 
-    border-bottom: 1px solid #8A8A8A;
     text-align: center;
 
     margin: 0px 1rem;
@@ -63,8 +62,10 @@ export const FormContainer = styled.form`
 export const SearchCity = styled.input`
     border: none;
     background: none;
-
     text-align: center;
+    padding: 5px;
+
+    color: white;
 
 
 `
@@ -74,5 +75,16 @@ export const SearchButton = styled.button`
 
     width: 12px;
 
+    cursor: pointer;
+
 `
 
+export const RecentCities = styled.div`
+    margin: 1em 0px;
+`
+
+export const WeatherExtraContent = styled.div`
+    
+    margin: 1em 0px;
+
+`
