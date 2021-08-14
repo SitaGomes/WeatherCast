@@ -5,17 +5,31 @@ import styled from "styled-components";
 export const HomeContainer = styled.div`
     display: flex;
     flex-direction: row;
-
+    overflow-x: hidden;
+    
     height: 100vh;
     width: 100vw;
+    
+    
 `
 
 //! Main Section
 export const TempContainer = styled.main`
-    text-align: center;
-    flex: 1;
+    height: 100vh;
+    z-index: 1;
 
-    margin: auto 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;    
+    
+    text-align: center;
+    
+    background-color: #101010;
+    
+    border-radius: 0px 0.8em 0.8em 0px;
+
+    position: relative;
 
 `
 
@@ -40,13 +54,63 @@ export const NormalTemp = styled.div`
 
 `
 
+
+//! Hamburguer and Times
+export const OpenMenuBtn = styled.span`
+    background: none;
+    display: none;
+    
+    @media only screen and (max-width: 830px){
+        width: 20px;
+        display: block;
+
+        position: absolute;
+
+        top: 40px;
+        right: 50px;
+ 
+
+    }
+
+`
+
+export const CloseMenuBtn = styled.span`
+    background: none;
+    display: none;
+    
+    @media only screen and (max-width: 830px){
+        width: 20px;
+        display: block;
+
+    }
+
+`
+
+
 //! Aside Section
 export const AsideContainer = styled.aside`
-    display: flex;
-    flex-direction: column;
-
-    width: 320px;
+    width: 360px;
     margin: 20px 1rem;
+    transition: 0.5s;
+    
+
+    @media only screen and (max-width: 830px){
+        margin: 0;
+
+        background-color: #969696; 
+        height: 100%;
+        width: 0; /* 0 width - change this with JavaScript */
+        z-index: 1; 
+        
+        
+        position: fixed; 
+        top: 0;
+        right: 0;
+        overflow-x: hidden;
+        
+    }
+
+
 `
 
 export const FormContainer = styled.form`
@@ -67,6 +131,8 @@ export const SearchCity = styled.input`
 
     color: white;
 
+    width: 95%;
+
 
 `
 export const SearchButton = styled.button`
@@ -78,6 +144,7 @@ export const SearchButton = styled.button`
     cursor: pointer;
 
 `
+
 
 export const RecentCities = styled.div`
     margin: 1em 0px;
