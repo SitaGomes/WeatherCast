@@ -12,6 +12,8 @@ import {
   SearchButton,
   WeatherExtraContent,
   RecentCities,
+  OpenMenuBtn,
+  CloseMenuBtn,
 } from "./Styles"
 
 import {
@@ -20,6 +22,9 @@ import {
 } from "../../Types/Interfaces"
 
 import MapICon from "../../Assets/SVG/MapIcon.svg"
+import Times from "../../Assets/SVG/Times.svg"
+import Hamburguer from "../../Assets/SVG/Hamburguer.svg"
+
 import { Strock } from "../../Components/Stroke";
 import { Tittle } from "../../Components/Tittle";
 import { ExtraWeatherContentChildren } from "../../Components/ExtraWeatherContent";
@@ -28,6 +33,8 @@ var axios = require("axios").default;
 
 
 export function Home() {
+
+  const [openMenu, setToogleMenu] = useState(true)
 
   const recentSearchedCities: string[] = ["London"]
 
@@ -54,6 +61,8 @@ export function Home() {
     setCityName(searchName.toUpperCase())
 
   }
+
+  function ToogleMenu() {setToogleMenu(!openMenu)}
 
   
   useEffect(() => {
@@ -114,8 +123,11 @@ export function Home() {
 
   return (
     <HomeContainer>
+      
       {/* Today's weather conditions */}
-      <TempContainer> 
+      <TempContainer
+        className={openMenu ? "push" : ""}
+      > 
         {
           loading ? (
             <>
@@ -123,6 +135,12 @@ export function Home() {
             </>
           ) : (
             <>
+
+              <OpenMenuBtn  
+                onClick={() => setToogleMenu(true)}
+                >
+                <img src={Hamburguer} alt="open menu" />
+              </OpenMenuBtn>
               
               {wrongCityName ? (
                 <>
@@ -152,10 +170,20 @@ export function Home() {
             </>
           )
         }
+ 
       </TempContainer>
-    
+
+
       {/* Extra content */}
-      <AsideContainer>
+      <AsideContainer
+        className={openMenu ? "menu-open" : "menu-close"}
+      >
+
+        <CloseMenuBtn
+          onClick={() => setToogleMenu(false)}
+        >
+          <img src={Times} alt="close Menu" />
+        </CloseMenuBtn>
 
         {/* Search city's name */}
         <FormContainer
