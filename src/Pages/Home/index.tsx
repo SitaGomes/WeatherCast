@@ -9,19 +9,29 @@ import {
   TempInformation,
   SearchCity,
   FormContainer,
-  SearchButton
+  SearchButton,
+  WeatherExtraContent,
+  RecentCities,
 } from "./Styles"
 
 import {
+  ExtraWeatherContent,
   Weather
 } from "../../Types/Interfaces"
 
 import MapICon from "../../Assets/SVG/MapIcon.svg"
+import { Strock } from "../../Components/Stroke";
+import { Tittle } from "../../Components/Tittle";
+import { ExtraWeatherContentChildren } from "../../Components/ExtraWeatherContent";
 
 var axios = require("axios").default;
 
 
 export function Home() {
+
+  const recentSearchedCities: string[] = ["London"]
+
+  const [extraWeatherContent, setExtraWeatherContent] = useState({} as ExtraWeatherContent)
 
   const [wrongCityName, setWrongCityName] = useState(false)
 
@@ -37,10 +47,10 @@ export function Home() {
 
   async function changeName(e: FormEvent) {
     e.preventDefault()
+    
+    if (searchName.trim() === "") return
+    
     setLoading(true)
-
-    if (searchName.trim === undefined) return
-
     setCityName(searchName.toUpperCase())
 
   }
@@ -63,18 +73,30 @@ export function Home() {
     const getWeather = async () => {
 
       try{
+
         const { data }: Weather = await axios.request(options)
         
-        setLoading(false)
-        setWrongCityName(false) //! Return Default state 
-  
+        //* Filtering
+        const weatherContent: ExtraWeatherContent = {
+          feels_like: Math.floor(data.main.feels_like - 273.15),
+          pressure: data.main.pressure,
+          wind_speed: data.wind.speed,
+          cloudiness: data.clouds.all,          
+          weather_condition: data.weather[0].description,
+        }
+        
+        setExtraWeatherContent(weatherContent)
+        
+        
         setMaxTemp(Math.floor(data.main.temp_max - 273.15))
-  
+        
         setMinTemp(Math.floor(data.main.temp_min - 273.15))
-  
+        
         setNormalTemp(Math.floor(data.main.temp - 273.15))
-  
-        console.log(data.main)
+        
+        
+        setLoading(false)
+        setWrongCityName(false) //! Return's to default state 
       
       } catch (err) {
 
@@ -82,7 +104,6 @@ export function Home() {
         setWrongCityName(true)
       
       }
-
 
     }
 
@@ -146,17 +167,51 @@ export function Home() {
             onChange={(e) => setSearchName(e.target.value)}
           
           />
+
           <SearchButton>
             <img src={MapICon} alt="search for cities name" />
           </SearchButton>
-          
+
         </FormContainer>
 
-        {/* Recent searched city's */}
-        <div></div>
+        <Strock />
 
+        {/* Recent searched city's */}
+        <RecentCities>
+          
+          <Tittle>
+            Recently Searched:
+          </Tittle>
+
+          {recentSearchedCities.map(city => {
+            return(
+              <p
+                key={city}
+              >
+                {city}
+              </p>
+            )
+          })}
+        </RecentCities>
+
+        <Strock/>
         {/* Wind pressure, humiduty, cloudy */}
-        <div></div>
+        <WeatherExtraContent>
+
+          <Tittle>
+            Weather Details:
+          </Tittle>
+
+          {Object.entries(extraWeatherContent).map((keys, values) => {
+            return(
+              <ExtraWeatherContentChildren
+                key={values}
+                name={keys[0]}
+                values={keys[1]}
+              />
+            )
+          })}
+        </WeatherExtraContent>
 
       </AsideContainer>
     
