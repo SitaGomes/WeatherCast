@@ -1,4 +1,5 @@
-import { ReactChild } from "react";
+import { BgImageContext } from '../Context/BgImageContext';
+import { Dispatch, ReactChild, SetStateAction } from "react";
 
 export interface Weather {
     data: {
@@ -38,4 +39,28 @@ export interface ExtraWeatherContent {
 
 export interface ChildrenProps {
     children: ReactChild
+}
+
+export interface OpenWeatherContextProps {
+    cityName: string,
+    normalTemp: number,
+    minTemp: number,
+    maxTemp: number,
+    loading: boolean,
+    extraWeatherContent: {
+        feels_like: number,
+        pressure: number,
+        cloudiness?: number, 
+        weather_condition: string,
+        wind_speed: number,
+    },
+    wrongCityName: boolean,
+    //! Don't touch pls 👇
+    setCityName: Dispatch<SetStateAction<string>>, 
+    setLoading: Dispatch<SetStateAction<boolean>>,
+
+}
+
+export interface BgImageContextProps {
+    bgPhoto: string
 }

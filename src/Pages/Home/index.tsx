@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState, FormEvent } from "react";
 import {
   HomeContainer,
@@ -16,11 +15,6 @@ import {
   CloseMenuBtn,
 } from "./Styles"
 
-import {
-  ExtraWeatherContent,
-  Weather
-} from "../../Types/Interfaces"
-
 import MapICon from "../../Assets/SVG/MapIcon.svg"
 import Times from "../../Assets/SVG/Times.svg"
 import Hamburguer from "../../Assets/SVG/Hamburguer.svg"
@@ -29,28 +23,29 @@ import { Strock } from "../../Components/Stroke";
 import { Tittle } from "../../Components/Tittle";
 import { ExtraWeatherContentChildren } from "../../Components/ExtraWeatherContent";
 
-var axios = require("axios").default;
+import {useWeatherContext} from "../../Hooks/useWeatherContext"
+import {useBgImageContext} from "../../Hooks/useBgImageContext"
 
 
 export function Home() {
-
-  const [openMenu, setToogleMenu] = useState(true)
-
+  
+  const {
+    cityName,
+    extraWeatherContent,
+    loading,
+    maxTemp,
+    minTemp,
+    normalTemp,
+    wrongCityName,
+    setCityName,
+    setLoading,
+  } = useWeatherContext()
+  
+  const {bgPhoto} = useBgImageContext()
+  
+  const [openMenu, setToogleMenu] = useState(false)
   const recentSearchedCities: string[] = ["London"]
-
-  const [extraWeatherContent, setExtraWeatherContent] = useState({} as ExtraWeatherContent)
-
-  const [wrongCityName, setWrongCityName] = useState(false)
-
-  const [loading, setLoading] = useState(true)
-  
   const [searchName, setSearchName] = useState("")
-  const [cityName, setCityName] = useState("New York")
-  
-  const [minTemp, setMinTemp] = useState(0)
-  const [maxTemp, setMaxTemp] = useState(0)
-  const [normalTemp, setNormalTemp] = useState(0)
-
 
   async function changeName(e: FormEvent) {
     e.preventDefault()
@@ -59,66 +54,9 @@ export function Home() {
     
     setLoading(true)
     setCityName(searchName.toUpperCase())
+    setToogleMenu(false)
 
   }
-
-  function ToogleMenu() {setToogleMenu(!openMenu)}
-
-  
-  useEffect(() => {
-
-    const options = {
-      method: 'GET',
-      url: 'https://community-open-weather-map.p.rapidapi.com/weather',
-      params: {
-        q: `${cityName}`,
-      },
-      headers: {
-        'x-rapidapi-key': '9ee2a2d7eamshe86b9bb88e0be56p1da44djsn48f0509e062e',
-        'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com'
-      }
-    };
-
-    const getWeather = async () => {
-
-      try{
-
-        const { data }: Weather = await axios.request(options)
-        
-        //* Filtering
-        const weatherContent: ExtraWeatherContent = {
-          feels_like: Math.floor(data.main.feels_like - 273.15),
-          pressure: data.main.pressure,
-          wind_speed: data.wind.speed,
-          cloudiness: data.clouds.all,          
-          weather_condition: data.weather[0].description,
-        }
-        
-        setExtraWeatherContent(weatherContent)
-        
-        
-        setMaxTemp(Math.floor(data.main.temp_max - 273.15))
-        
-        setMinTemp(Math.floor(data.main.temp_min - 273.15))
-        
-        setNormalTemp(Math.floor(data.main.temp - 273.15))
-        
-        
-        setLoading(false)
-        setWrongCityName(false) //! Return's to default state 
-      
-      } catch (err) {
-
-        setLoading(false)
-        setWrongCityName(true)
-      
-      }
-
-    }
-
-    getWeather()
-
-  }, [cityName])
 
 
   return (
@@ -127,6 +65,7 @@ export function Home() {
       {/* Today's weather conditions */}
       <TempContainer
         className={openMenu ? "push" : ""}
+        style={{backgroundImage: `url(${bgPhoto})`}}
       > 
         {
           loading ? (

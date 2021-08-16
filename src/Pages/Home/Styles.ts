@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 
-
 export const HomeContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -15,6 +14,8 @@ export const HomeContainer = styled.div`
 
 //! Main Section
 export const TempContainer = styled.main`
+    color: #00417D;
+
     height: 100vh;
     z-index: 1;
 
@@ -23,10 +24,12 @@ export const TempContainer = styled.main`
     justify-content: center;
     flex: 1;    
     
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     text-align: center;
-    
-    background-color: #101010;
-    
+        
     border-radius: 0px 0.8em 0.8em 0px;
 
     position: relative;
@@ -39,6 +42,7 @@ export const TempInformation = styled.div`
     justify-content: center;
     align-items: center;
 
+
     gap: 1rem;
 
 `
@@ -49,8 +53,11 @@ export const MinMaxTemp = styled.div`
 
 
 export const NormalTemp = styled.div`
-
     font-size: 7rem;
+
+    @media only screen and (max-width: 830px){
+        font-size: 5rem;
+    }
 
 `
 
