@@ -22,7 +22,7 @@ export function BackgroundImage ({children}: ChildrenProps) {
             
             try{
                 const resp = await unsplashApi.search.getPhotos({
-                query: `${extraWeatherContent.weather_condition}`,
+                query: `${extraWeatherContent.main_weather}`,
                 perPage: 1
                 })
     

@@ -19,12 +19,13 @@ import MapICon from "../../Assets/SVG/MapIcon.svg"
 import Times from "../../Assets/SVG/Times.svg"
 import Hamburguer from "../../Assets/SVG/Hamburguer.svg"
 
+import BGImage from "../../Assets/Images/clear.jpg"
+
 import { Strock } from "../../Components/Stroke";
 import { Tittle } from "../../Components/Tittle";
 import { ExtraWeatherContentChildren } from "../../Components/ExtraWeatherContent";
 
 import {useWeatherContext} from "../../Hooks/useWeatherContext"
-import {useBgImageContext} from "../../Hooks/useBgImageContext"
 
 
 export function Home() {
@@ -41,10 +42,9 @@ export function Home() {
     setLoading,
   } = useWeatherContext()
   
-  const {bgPhoto} = useBgImageContext()
+  const [bgPhoto, setBgPhoto] = useState("clear")
   
   const [openMenu, setToogleMenu] = useState(false)
-  const recentSearchedCities: string[] = ["London"]
   const [searchName, setSearchName] = useState("")
 
   async function changeName(e: FormEvent) {
@@ -65,7 +65,6 @@ export function Home() {
       {/* Today's weather conditions */}
       <TempContainer
         className={openMenu ? "push" : ""}
-        style={{backgroundImage: `url(${bgPhoto})`}}
       > 
         {
           loading ? (
@@ -74,7 +73,6 @@ export function Home() {
             </>
           ) : (
             <>
-
               <OpenMenuBtn  
                 onClick={() => setToogleMenu(true)}
                 >
@@ -141,9 +139,9 @@ export function Home() {
 
         </FormContainer>
 
-        <Strock />
+        {/* <Strock />
 
-        {/* Recent searched city's */}
+        {/* Recent searched city's
         <RecentCities>
           
           <Tittle>
@@ -159,7 +157,7 @@ export function Home() {
               </p>
             )
           })}
-        </RecentCities>
+        </RecentCities> */}
 
         <Strock/>
         {/* Wind pressure, humiduty, cloudy */}

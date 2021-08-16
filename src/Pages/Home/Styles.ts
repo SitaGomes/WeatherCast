@@ -24,6 +24,7 @@ export const TempContainer = styled.main`
     justify-content: center;
     flex: 1;    
     
+    background-image: url("../../Assets/Images/sand.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -133,8 +134,10 @@ export const FormContainer = styled.form`
 export const SearchCity = styled.input`
     border: none;
     background: none;
-    text-align: center;
     padding: 5px;
+
+    text-align: center;
+    font-size: 1.4rem;
 
     color: white;
 
