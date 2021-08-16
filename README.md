@@ -1,10 +1,9 @@
 # WeatherCast
 
 ## :gear: Features
-- [ ] Search the weather by the city's name;
-- [ ] Show the city's weather;
-- [ ] Show nex day's weather;
-- [ ] Show humidity, wind pressure, cloud porcentage, etc. 
+- [X] Search the weather by the city's name;
+- [X] Show the city's weather;
+- [X] Show humidity, wind pressure, cloud porcentage, etc. 
 
 ## :computer: Instalation
 ```bash
