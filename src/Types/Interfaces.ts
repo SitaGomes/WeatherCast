@@ -34,6 +34,7 @@ export interface ExtraWeatherContent {
     pressure: number,
     cloudiness?: number, 
     weather_condition: string,
+    main_weather: string,
     wind_speed: number,
 }
 
@@ -53,6 +54,7 @@ export interface OpenWeatherContextProps {
         cloudiness?: number, 
         weather_condition: string,
         wind_speed: number,
+        main_weather: string
     },
     wrongCityName: boolean,
     //! Don't touch pls 👇

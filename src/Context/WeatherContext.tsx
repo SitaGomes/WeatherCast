@@ -56,6 +56,7 @@ export function WeatherContext ({children}: ChildrenProps) {
                 pressure: data.main.pressure,
                 wind_speed: data.wind.speed,
                 cloudiness: data.clouds.all,          
+                main_weather: data.weather[0].main,
                 weather_condition: data.weather[0].description,
                 }
                 

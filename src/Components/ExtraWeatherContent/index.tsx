@@ -42,6 +42,9 @@ export function ExtraWeatherContentChildren({name, values}: any) {
             case "weather_condition":
                 name = "Weather Condition"
                 return
+            
+            case "main_weather":
+                name = "Weather"
     }}
 
     redo()
