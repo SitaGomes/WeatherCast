@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Home} from './Pages/Home/index';
-import {Global} from "./Styles/GloblaStyle"
+import {Global as GlobalCss} from "./Styles/GloblaStyle"
+import {WeatherContext as WeatherProvider} from "./Context/WeatherContext"
+import {BackgroundImage as BgImageProvider} from "./Context/BgImageContext"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    
+  <WeatherProvider>
+     <BgImageProvider>
+      <>
+        <Home />
+        <GlobalCss />
+      </>
+     </BgImageProvider>
+  </WeatherProvider>
 
-    <Global></Global>
   </React.StrictMode>,
   document.getElementById('root')
 );
