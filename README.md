@@ -4,16 +4,20 @@
 - [X] Search the weather by the city's name;
 - [X] Show the city's weather;
 - [X] Show humidity, wind pressure, cloud porcentage, etc. 
-- [] Auto complete city's name
+- [ ] Auto complete city's name
  
 ## :computer: Instalation
 ```bash
+// First clone the repository
 $ git clone http://github.com/SitaGomes/WeatherCast
 
+// Them go to the project folder
 $ cd WeatherCast
 
+// Install all the dependencies
 $ npm install
 
+// Run the project and 
 $ npm start
 
 ```
