@@ -4,7 +4,8 @@
 - [X] Search the weather by the city's name;
 - [X] Show the city's weather;
 - [X] Show humidity, wind pressure, cloud porcentage, etc. 
-
+- [] Auto complete city's name
+ 
 ## :computer: Instalation
 ```bash
 $ git clone http://github.com/SitaGomes/WeatherCast
