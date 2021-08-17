@@ -9,7 +9,7 @@ export const Global =  createGlobalStyle`
     }
     
     body{
-        background-color: #52A2B4;
+        background-color: #008DAC;
         color: white;
         font-family: 'Lato', sans-serif;
     }

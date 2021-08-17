@@ -10,7 +10,6 @@ import {
   FormContainer,
   SearchButton,
   WeatherExtraContent,
-  RecentCities,
   OpenMenuBtn,
   CloseMenuBtn,
 } from "./Styles"
@@ -18,8 +17,6 @@ import {
 import MapICon from "../../Assets/SVG/MapIcon.svg"
 import Times from "../../Assets/SVG/Times.svg"
 import Hamburguer from "../../Assets/SVG/Hamburguer.svg"
-
-import BGImage from "../../Assets/Images/clear.jpg"
 
 import { Strock } from "../../Components/Stroke";
 import { Tittle } from "../../Components/Tittle";
@@ -29,6 +26,22 @@ import {useWeatherContext} from "../../Hooks/useWeatherContext"
 
 
 export function Home() {
+  
+  const bgImages: any = {
+    Clear: "https://images.unsplash.com/photo-1558418294-9da149757efe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Thunderstorm: "https://images.unsplash.com/photo-1429552077091-836152271555?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGh1bmRlcnN0b3JtfGVufDB8MXwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Dust: "https://images.unsplash.com/photo-1520632587893-f4e855502ca3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZHVzdHxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Sand: "https://images.unsplash.com/photo-1500285426772-410d8f2243d0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c2FuZHxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Squall: "https://images.unsplash.com/photo-1621924123226-01ca69c08e29?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdpbmR8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Rain: "https://images.unsplash.com/photo-1509635022432-0220ac12960b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cmFpbnxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Haze: "https://images.unsplash.com/photo-1533708985023-a9726305e9c8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGF6ZXxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Snow: "https://images.unsplash.com/photo-1464852045489-bccb7d17fe39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c25vd3xlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Tornado: "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dG9ybmFkb3xlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Smoke: "https://images.unsplash.com/photo-1542789828-6c82d889ed74?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c21va2V8ZW58MHwxfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Mist: "https://images.unsplash.com/photo-1581713872605-b9dfbc84eaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWlzdHxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Drizzle: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFpbnxlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    Clouds: "https://images.unsplash.com/photo-1491226669704-7d90b66ad115?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNsb3Vkc3xlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  }
   
   const {
     cityName,
@@ -41,9 +54,7 @@ export function Home() {
     setCityName,
     setLoading,
   } = useWeatherContext()
-  
-  const [bgPhoto, setBgPhoto] = useState("clear")
-  
+
   const [openMenu, setToogleMenu] = useState(false)
   const [searchName, setSearchName] = useState("")
 
@@ -65,6 +76,11 @@ export function Home() {
       {/* Today's weather conditions */}
       <TempContainer
         className={openMenu ? "push" : ""}
+        style={{
+          backgroundImage: `url(${bgImages[`${extraWeatherContent.main_weather}`]})`,
+          color: ``
+        }
+      }
       > 
         {
           loading ? (
@@ -138,26 +154,6 @@ export function Home() {
           </SearchButton>
 
         </FormContainer>
-
-        {/* <Strock />
-
-        {/* Recent searched city's
-        <RecentCities>
-          
-          <Tittle>
-            Recently Searched:
-          </Tittle>
-
-          {recentSearchedCities.map(city => {
-            return(
-              <p
-                key={city}
-              >
-                {city}
-              </p>
-            )
-          })}
-        </RecentCities> */}
 
         <Strock/>
         {/* Wind pressure, humiduty, cloudy */}
