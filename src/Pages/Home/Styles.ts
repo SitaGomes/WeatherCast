@@ -14,6 +14,12 @@ export const HomeContainer = styled.div`
 
 //! Main Section
 export const TempContainer = styled.main`
+    
+    background-image: url();
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
     color: #00417D;
 
     height: 100vh;
@@ -24,11 +30,6 @@ export const TempContainer = styled.main`
     justify-content: center;
     flex: 1;    
     
-    background-image: url("../../Assets/Images/sand.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
     text-align: center;
         
     border-radius: 0px 0.8em 0.8em 0px;
@@ -132,6 +133,8 @@ export const FormContainer = styled.form`
 `
 
 export const SearchCity = styled.input`
+    color: white;
+
     border: none;
     background: none;
     padding: 5px;
@@ -139,10 +142,8 @@ export const SearchCity = styled.input`
     text-align: center;
     font-size: 1.4rem;
 
-    color: white;
 
     width: 95%;
-
 
 `
 export const SearchButton = styled.button`

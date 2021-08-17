@@ -1,4 +1,3 @@
-import { BgImageContext } from '../Context/BgImageContext';
 import { Dispatch, ReactChild, SetStateAction } from "react";
 
 export interface Weather {
@@ -60,9 +59,19 @@ export interface OpenWeatherContextProps {
     //! Don't touch pls 👇
     setCityName: Dispatch<SetStateAction<string>>, 
     setLoading: Dispatch<SetStateAction<boolean>>,
-
 }
 
-export interface BgImageContextProps {
-    bgPhoto: string
+export type BgImageProps = {
+    clear: string,
+    dust: string,
+    thunderstorm: string,
+    drizzle: string,
+    haze: string,
+    sand: string,
+    mist: string,
+    rain: string,
+    snow: string,
+    tornado: string,
+    squall: string,
+    smoke: string,
 }
