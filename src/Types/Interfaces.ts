@@ -1,4 +1,5 @@
 import { Dispatch, ReactChild, SetStateAction } from "react";
+import { InputHTMLAttributes } from "react"
 
 export interface Weather {
     data: {
@@ -75,3 +76,6 @@ export type BgImageProps = {
     squall: string,
     smoke: string,
 }
+
+
+export type InputProps = InputHTMLAttributes<HTMLInputElement>

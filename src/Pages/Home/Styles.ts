@@ -132,20 +132,6 @@ export const FormContainer = styled.form`
 
 `
 
-export const SearchCity = styled.input`
-    color: white;
-
-    border: none;
-    background: none;
-    padding: 5px;
-
-    text-align: center;
-    font-size: 1.4rem;
-
-
-    width: 95%;
-
-`
 export const SearchButton = styled.button`
     border: none;
     background: none;

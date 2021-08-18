@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState, FormEvent} from "react";
 import {
   HomeContainer,
   MinMaxTemp,
@@ -6,7 +6,6 @@ import {
   NormalTemp,
   TempContainer,
   TempInformation,
-  SearchCity,
   FormContainer,
   SearchButton,
   WeatherExtraContent,
@@ -21,11 +20,16 @@ import Hamburguer from "../../Assets/SVG/Hamburguer.svg"
 import { Strock } from "../../Components/Stroke";
 import { Tittle } from "../../Components/Tittle";
 import { ExtraWeatherContentChildren } from "../../Components/ExtraWeatherContent";
+import { SearchCity } from "../../Components/SearchCity"
 
 import {useWeatherContext} from "../../Hooks/useWeatherContext"
+import { useEffect } from "react";
 
-
+var axios = require("axios").default;
 export function Home() {
+
+  const [openMenu, setToogleMenu] = useState(false)
+  const [searchName, setSearchName] = useState("")
   
   const bgImages: any = {
     Clear: "https://images.unsplash.com/photo-1558418294-9da149757efe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2xlYXIlMjBza3l8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
@@ -55,8 +59,6 @@ export function Home() {
     setLoading,
   } = useWeatherContext()
 
-  const [openMenu, setToogleMenu] = useState(false)
-  const [searchName, setSearchName] = useState("")
 
   async function changeName(e: FormEvent) {
     e.preventDefault()
@@ -68,6 +70,32 @@ export function Home() {
     setToogleMenu(false)
 
   }
+
+  useEffect(() => {
+
+    const citiesApi = {
+      method: 'GET',
+      url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities',
+      params: {
+        limit: '5', 
+        namePrefix: `${searchName}`
+      },
+      headers: {
+        'x-rapidapi-key': '9ee2a2d7eamshe86b9bb88e0be56p1da44djsn48f0509e062e',
+        'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
+      }
+    };
+
+    const getCitiesApi = async () => {
+
+      const resp = await axios.request(citiesApi)
+
+      console.log(resp)
+    }
+
+    getCitiesApi()
+
+  }, [searchName])
 
 
   return (
@@ -142,9 +170,11 @@ export function Home() {
         <FormContainer
           onSubmit={(e) => changeName(e)}
         >
-          <SearchCity 
+
+          <SearchCity
+            id="autocomplete"
             type="text" 
-            placeholder="city's name" 
+            placeholder="Search city" 
             onChange={(e) => setSearchName(e.target.value)}
           
           />

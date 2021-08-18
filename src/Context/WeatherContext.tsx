@@ -28,8 +28,6 @@ export function WeatherContext ({children}: ChildrenProps) {
         if (oldCityName != null){
             setCityName(oldCityName)
         }
-
-        console.log(oldCityName)
         
         const weatherOptions = {
             method: 'GET',
