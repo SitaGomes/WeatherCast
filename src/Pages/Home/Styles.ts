@@ -1,154 +1,59 @@
 import styled from "styled-components";
+import heroImage from "Assets/Images/heroImage.jpg"
 
+export const HomeContainer = styled.main`
 
-export const HomeContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    overflow-x: hidden;
+    background: no-repeat center/cover url(${heroImage});
     
     height: 100vh;
-    width: 100vw;
-    
-    
-`
-
-//! Main Section
-export const TempContainer = styled.main`
-    
-    background-image: url();
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    color: #00417D;
-
-    height: 100vh;
-    z-index: 1;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;    
-    
-    text-align: center;
-        
-    border-radius: 0px 0.8em 0.8em 0px;
-
-    position: relative;
-
-`
-
-export const TempInformation = styled.div`
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
+`
 
-    gap: 1rem;
+//! Main Weather info
+export const TempContainer = styled.section`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 40px 0;
 
+    gap: 20px;
+
+`
+export const TodaysWeather = styled.div`
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
 `
 
 export const MinMaxTemp = styled.div`
-    font-size: 1.3rem;
-`
+    text-align: center;
+    font-size: 1.4rem;
 
+`
 
 export const NormalTemp = styled.div`
-    font-size: 7rem;
+    text-align: center;
 
-    @media only screen and (max-width: 830px){
-        font-size: 5rem;
+    .normal-temp{
+        font-size: 7rem;
     }
 
 `
 
+//! Extra weather details
 
-//! Hamburguer and Times
-export const OpenMenuBtn = styled.span`
-    background: none;
-    display: none;
-    
-    @media only screen and (max-width: 830px){
-        width: 20px;
-        display: block;
-
-        position: absolute;
-
-        top: 40px;
-        right: 50px;
- 
-
-    }
-
-`
-
-export const CloseMenuBtn = styled.span`
-    background: none;
-    display: none;
-    
-    @media only screen and (max-width: 830px){
-        width: 20px;
-        display: block;
-
-    }
-
-`
-
-
-//! Aside Section
-export const AsideContainer = styled.aside`
-    width: 360px;
-    margin: 20px 1rem;
-    transition: 0.5s;
-    
-
-    @media only screen and (max-width: 830px){
-        margin: 0;
-
-        background-color: #969696; 
-        height: 100%;
-        width: 0; /* 0 width - change this with JavaScript */
-        z-index: 1; 
-        
-        
-        position: fixed; 
-        top: 0;
-        right: 0;
-        overflow-x: hidden;
-        
-    }
-
-
-`
-
-export const FormContainer = styled.form`
-    background: none;
-    border: none;
+export const ExtraContentContainer = styled.section`
+    max-width: 1000px;
+    width: 100%;
 
     text-align: center;
 
-    margin: 0px 1rem;
-
-`
-
-export const SearchButton = styled.button`
-    border: none;
-    background: none;
-
-    width: 12px;
-
-    cursor: pointer;
-
-`
-
-
-export const RecentCities = styled.div`
-    margin: 1em 0px;
-`
-
-export const WeatherExtraContent = styled.div`
-    
-    margin: 1em 0px;
-
+    background: #FFF9;
+    color: #000;
 `

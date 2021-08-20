@@ -15,7 +15,7 @@ const LittleExtraContent = styled.div`
     }
 `
 
-export function ExtraWeatherContentChildren({name, values}: any) {
+export function ExtraWeatherContent({name, values}: any) {
 
     const redo = () => {
         switch (name) {
