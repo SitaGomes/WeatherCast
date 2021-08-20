@@ -2,17 +2,17 @@ import styled from "styled-components"
 import { InputProps } from "../../Types/Interfaces"
 
 const Inputs = styled.input`
+    background: none;
     color: white;
 
     border: none;
-    background: none;
-    padding: 5px;
+    border-bottom: 2px solid white;
+
+    width: 300px;
 
     text-align: center;
     font-size: 1.4rem;
-
-    width: 95%;
-
+    font-weight: 500;
 `
 
 export function SearchCity(props: InputProps) {

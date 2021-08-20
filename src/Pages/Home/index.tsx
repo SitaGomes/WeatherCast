@@ -1,34 +1,21 @@
 import { useState, FormEvent} from "react";
 import {
-  HomeContainer,
-  MinMaxTemp,
-  AsideContainer,
-  NormalTemp,
-  TempContainer,
-  TempInformation,
-  FormContainer,
-  SearchButton,
-  WeatherExtraContent,
-  OpenMenuBtn,
-  CloseMenuBtn,
+  ExtraContentContainer,
+  HomeContainer, MinMaxTemp, NormalTemp, TempContainer, TodaysWeather,
+
 } from "./Styles"
 
-import MapICon from "../../Assets/SVG/MapIcon.svg"
-import Times from "../../Assets/SVG/Times.svg"
-import Hamburguer from "../../Assets/SVG/Hamburguer.svg"
+import MapICon from "Assets/SVG/MapIcon.svg"
 
-import { Strock } from "../../Components/Stroke";
-import { Tittle } from "../../Components/Tittle";
-import { ExtraWeatherContentChildren } from "../../Components/ExtraWeatherContent";
-import { SearchCity } from "../../Components/SearchCity"
+import { ExtraWeatherContent } from "Components/ExtraWeatherContent";
+import { SearchCity } from "Components/SearchCity"
 
-import {useWeatherContext} from "../../Hooks/useWeatherContext"
+import {useWeatherContext} from "Hooks/useWeatherContext"
 import { useEffect } from "react";
 
 var axios = require("axios").default;
 export function Home() {
 
-  const [openMenu, setToogleMenu] = useState(false)
   const [searchName, setSearchName] = useState("")
   
   const bgImages: any = {
@@ -59,15 +46,17 @@ export function Home() {
     setLoading,
   } = useWeatherContext()
 
+  console.log(extraWeatherContent)
+
 
   async function changeName(e: FormEvent) {
     e.preventDefault()
     
     if (searchName.trim() === "") return
     
+    setSearchName("")
     setLoading(true)
     setCityName(searchName.toUpperCase())
-    setToogleMenu(false)
 
   }
 
@@ -100,111 +89,74 @@ export function Home() {
 
   return (
     <HomeContainer>
+      {/* Dark | Light mode */}
+      <div></div>
       
-      {/* Today's weather conditions */}
-      <TempContainer
-        className={openMenu ? "push" : ""}
-        style={{
-          backgroundImage: `url(${bgImages[`${extraWeatherContent.main_weather}`]})`,
-          color: ``
-        }
-      }
-      > 
-        {
-          loading ? (
-            <>
-              <h1>Loading...</h1>
-            </>
-          ) : (
-            <>
-              <OpenMenuBtn  
-                onClick={() => setToogleMenu(true)}
-                >
-                <img src={Hamburguer} alt="open menu" />
-              </OpenMenuBtn>
-              
-              {wrongCityName ? (
-                <>
-                  <h1>City not found</h1>
-                </>
-              ): (
-                <>
-                  {/* City's name */}
-                  <h3 className="roboto">{cityName} | HOJE</h3>
+      {/* Input search */}
+      <SearchCity 
+        type="text"
+        placeholder="Search City..."
+      />
+      
+      {/* Temp info */}
+      <TempContainer>
+        {loading ?? (<div>Loading...</div>)}
 
-                  {/* Min, Normal, Max temperature */}
-                  <TempInformation>
-
-                    {/* Min */}
-                    <MinMaxTemp>{ minTemp }ºC</MinMaxTemp>
-
-                    {/* Normal */}
-                    <NormalTemp className="roboto">{ normalTemp }ºC</NormalTemp>
-
-                    {/* Max */}
-                    <MinMaxTemp>{ maxTemp }ºC</MinMaxTemp>
-
-                  </TempInformation>
-                </>
-              )}
-
-            </>
-          )
-        }
- 
-      </TempContainer>
-
-
-      {/* Extra content */}
-      <AsideContainer
-        className={openMenu ? "menu-open" : "menu-close"}
-      >
-
-        <CloseMenuBtn
-          onClick={() => setToogleMenu(false)}
+        {/* City's name */}
+        <h1
+          className="roboto"
         >
-          <img src={Times} alt="close Menu" />
-        </CloseMenuBtn>
+            {cityName} | TODAY
+        </h1>
 
-        {/* Search city's name */}
-        <FormContainer
-          onSubmit={(e) => changeName(e)}
-        >
+        <TodaysWeather>
 
-          <SearchCity
-            id="autocomplete"
-            type="text" 
-            placeholder="Search city" 
-            onChange={(e) => setSearchName(e.target.value)}
+          {/* Min temp */}
+          <MinMaxTemp>
+            <div>Min</div>
+            
+            <div>
+              {minTemp}ºC
+            </div>
+          </MinMaxTemp>
+
+          {/* Normal temp */}
+          <NormalTemp>
+
+            <div className="normal-temp roboto">
+              {normalTemp}ºC
+            </div>
           
+          </NormalTemp>
+
+          {/* Max temp */}
+          <MinMaxTemp>
+            <div>Max</div>
+            
+            <div>
+              {maxTemp}ºC
+            </div>
+          
+          </MinMaxTemp>
+
+        </TodaysWeather>
+
+      </TempContainer>
+      
+      {/* Weather Details */}
+      <ExtraContentContainer>
+        
+        <h1>Weather Details</h1>
+
+        {/* Loop */}
+        {Object.entries(extraWeatherContent).map((values, keys) => {
+          <ExtraWeatherContent 
+            key={values}
+            name={keys}
+            values={keys}
           />
-
-          <SearchButton>
-            <img src={MapICon} alt="search for cities name" />
-          </SearchButton>
-
-        </FormContainer>
-
-        <Strock/>
-        {/* Wind pressure, humiduty, cloudy */}
-        <WeatherExtraContent>
-
-          <Tittle>
-            Weather Details:
-          </Tittle>
-
-          {Object.entries(extraWeatherContent).map((keys, values) => {
-            return(
-              <ExtraWeatherContentChildren
-                key={values}
-                name={keys[0]}
-                values={keys[1]}
-              />
-            )
-          })}
-        </WeatherExtraContent>
-
-      </AsideContainer>
+        })}
+      </ExtraContentContainer>
     
     </HomeContainer>
   );
