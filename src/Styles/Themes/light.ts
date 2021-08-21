@@ -2,7 +2,10 @@ export default {
     tittle: "light",
 
     colors: {
-        background: "#FFF",
-        text: "#000"
+        background: "#FFF9",
+        color: "#FFF",
+        icon: "#FFF500",
+        text: "#000",
+         
     }
 }
