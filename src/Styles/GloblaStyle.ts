@@ -9,13 +9,19 @@ export const Global =  createGlobalStyle`
     }
     
     body{
-        background: white;
-        color: white;
+        background: ${props => props.theme.colors.background};
+        color: ${props => props.theme.colors.color};
         font-family: 'Lato', sans-serif;
     }
 
     .roboto{
         font-family: 'Roboto', sans-serif;
+    }
+
+    .icon{
+        width: 20px;
+
+        margin: auto 0;
     }
 
 `

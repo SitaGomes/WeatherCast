@@ -1,25 +1,29 @@
-import { useState, FormEvent} from "react";
+import { useState, FormEvent, useEffect} from "react";
+import Swicth from "react-switch"
 import {
   ExtraContentContainer,
   HomeContainer, MinMaxTemp, NormalTemp, TempContainer, TodaysWeather, ToogleMode,
 
 } from "./Styles"
 
-import MapICon from "Assets/SVG/MapIcon.svg"
-import Moon from "Assets/SVG/moon.svg"
-import Sun from "Assets/SVG/sun.svg"
-
 import { ExtraWeatherContent } from "Components/ExtraWeatherContent";
 import { SearchCity } from "Components/SearchCity"
+import {MoonSVG} from "Components/Moon/index"
+import {SunSVG} from "Components/Sun/index"
+
 
 import {useWeatherContext} from "Hooks/useWeatherContext"
-import { useEffect } from "react";
+import {useThemeContext} from "Hooks/useThemeContext"
+import { useStyledThemeContext } from "Hooks/useStyledThemeContext";
 
 var axios = require("axios").default;
+
 export function Home() {
 
   const [searchName, setSearchName] = useState("")
-  
+
+  const {colors} = useStyledThemeContext()
+  const {theme, ToogleTheme} = useThemeContext()
   const {
     cityName,
     extraWeatherContent,
@@ -75,7 +79,45 @@ export function Home() {
     <HomeContainer>
       {/* Dark | Light mode */}
       <ToogleMode>
-        <img src={Sun} alt="Dark and Light mode toogle" />
+        <Swicth 
+          onChange={ToogleTheme}
+          checked={theme.tittle === "light"}
+          checkedIcon={
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                fontSize: 15,
+                color: "white",
+                paddingRight: 2
+              }}
+            >
+              <SunSVG />
+            </div>
+          }
+          uncheckedIcon={
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                fontSize: 15,
+                color: "white",
+                paddingRight: 2
+              }}
+            >
+              <MoonSVG />
+            </div>
+          }
+          offColor={colors.icon}
+          onColor={colors.icon}
+          height={30}
+          width={60}
+          handleDiameter={35}
+        />
       </ToogleMode>
       
       <form
