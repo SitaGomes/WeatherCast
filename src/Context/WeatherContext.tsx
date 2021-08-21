@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { createContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import { ChildrenProps, ExtraWeatherContent, OpenWeatherContextProps, Weather } from "../Types/Interfaces";
+import { useLocalState } from "Hooks/useLocalState";
 
 export const OpenWeatherContext = createContext({} as OpenWeatherContextProps)
 var axios = require("axios").default;
 
 export function WeatherContext ({children}: ChildrenProps) {
 
-    const [cityName, setCityName] = useState("Contagem")
-    localStorage.setItem("cityName", `${cityName}`)
+    const [cityName, setCityName] = useLocalState<string>("cityName", "Contagem")
 
     const [loading, setLoading] = useState(true)
 
@@ -23,11 +22,6 @@ export function WeatherContext ({children}: ChildrenProps) {
     
     
     useEffect(() => {
-        
-        const oldCityName = localStorage.getItem("cityName")
-        if (oldCityName != null){
-            setCityName(oldCityName)
-        }
         
         const weatherOptions = {
             method: 'GET',

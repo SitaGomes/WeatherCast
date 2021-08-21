@@ -17,22 +17,15 @@ export const HomeContainer = styled.main`
 `
 
 //! Dark and Light Mode
-export const ToogleMode = styled.button`
-    background-color: #FFF;
+export const ToogleMode = styled.div`
     border-radius: 50%;
 
-    padding: 10px;
-    margin: 10px 10px 0 0;
+    margin: 25px 25px 0 0;
     border: none;
-
-    img{
-        width: 30px;
-    }
 
     display: flex;
     align-self: end;
 `
-
 
 
 //! Main Weather info
@@ -75,9 +68,11 @@ export const ExtraContentContainer = styled.section`
 
     text-align: center;
 
-    background: #FFF9;
-    color: #000;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
 
     border-radius: 50px 50px 0 0;
+
+    padding: 10px;
 
 `

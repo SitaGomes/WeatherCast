@@ -4,7 +4,7 @@ const LittleExtraContent = styled.div`
     display: flex;
     justify-content: space-around;
 
-    color: #100;
+    color: ${props => props.theme.colors.text};
 
     padding: 10px 0;
 
@@ -15,7 +15,6 @@ const LittleExtraContent = styled.div`
 
 export function ExtraWeatherContent({name, values}: any) {
 
-    console.log(name, values)
     const redo = () => {
         switch (name) {
             case "feels_like":
