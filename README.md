@@ -24,7 +24,7 @@ $ npm start
 
 ## :raising_hand_man: Author
 
-Created by ✌ Arthur Gomes, let's chat!
+Created with ♥ by Arthur Gomes, let's chat!
 
 <a href="https://www.linkedin.com/in/arthur-sita-gomes-3683221b3/">
     <img src="https://pt.pngtree.com/so/ícones-linkedin"/>
