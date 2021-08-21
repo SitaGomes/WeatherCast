@@ -36,8 +36,8 @@ export function WeatherContext ({children}: ChildrenProps) {
               q: `${cityName}`,
             },
             headers: {
-              'x-rapidapi-key': 'ee81247291mshbc5c014c9004f6ap1aec40jsn151c7de80dc1',
-              'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com'
+                'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
+                'x-rapidapi-key': 'f8b01a418dmsh8b02cde83f50103p10d8acjsn3d88bd7e1b1a'
             }
         };
 

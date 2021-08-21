@@ -2,21 +2,20 @@ import styled from "styled-components";
 
 const LittleExtraContent = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    color: #e2e2e2;
+    color: #100;
 
-    padding: 10px 13px;
+    padding: 10px 0;
 
     &:hover{
         filter: brightness(200%);
-        border: 1px solid #dddddd;
-        border-radius: 10px;
     }
 `
 
 export function ExtraWeatherContent({name, values}: any) {
 
+    console.log(name, values)
     const redo = () => {
         switch (name) {
             case "feels_like":
