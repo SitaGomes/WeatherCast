@@ -2,7 +2,9 @@ export default {
     tittle: "dark",
 
     colors: {
-        background: "#000",
+        background: "#0009",
+        color: "#000",
+        icon: "#003499",
         text: "#FFF"
     }
 }

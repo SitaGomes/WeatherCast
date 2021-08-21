@@ -62,20 +62,18 @@ export interface OpenWeatherContextProps {
     setLoading: Dispatch<SetStateAction<boolean>>,
 }
 
-export type BgImageProps = {
-    clear: string,
-    dust: string,
-    thunderstorm: string,
-    drizzle: string,
-    haze: string,
-    sand: string,
-    mist: string,
-    rain: string,
-    snow: string,
-    tornado: string,
-    squall: string,
-    smoke: string,
-}
 
+export interface ThemeProps {
+    ToogleTheme(): void,
+    theme: {
+        tittle: string;
+        colors: {
+            background: string;
+            color: string;
+            icon: string;
+            text: string;
+        }
+    },
+}
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement>
