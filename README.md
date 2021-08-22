@@ -4,7 +4,7 @@
 <p align="center">
  <a href="#camera-demonstration">Demonstration</a> •
  <a href="#gear-features">Features</a> •
- <a href="#gear-technologies">Technologies</a> •
+ <a href="#electric_plug-technologies">Technologies</a> •
  <a href="#computer-instalation">Instalation</a> •
  <a href="#raising_hand_man-author">Author</a> 
 </p>
@@ -23,9 +23,9 @@
 - [X] Show the city's weather;
 - [X] Show humidity, wind pressure, cloud porcentage, etc. 
 - [X] Change theme color
- 
+- 
 
-## Technologies
+## 🔌 Technologies
 * [React](https://pt-br.reactjs.org/)
 * [React Switch](https://www.npmjs.com/package/react-switch/)
 * [TypeScript](https://www.typescriptlang.org/)
