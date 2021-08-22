@@ -34,15 +34,26 @@ export const TempContainer = styled.section`
     align-items: center;
     flex-direction: column;
     margin: 40px 0;
-
+    
     gap: 20px;
-
+    
+    
+    @media only screen and (max-width: 35rem) {
+        margin: 10px;
+    }
+    
 `
+
 export const TodaysWeather = styled.div`
     display: flex;
     align-items: center;
-
+    
     gap: 30px;
+    
+    @media only screen and (max-width: 35rem) {
+        flex-direction: column;
+        gap: 0;
+    }
 `
 
 export const MinMaxTemp = styled.div`
@@ -56,6 +67,12 @@ export const NormalTemp = styled.div`
 
     .normal-temp{
         font-size: 10rem;
+    }
+
+    @media only screen and (max-width: 35rem) {
+        .normal-temp{
+            font-size: 7rem;
+        }
     }
 
 `
