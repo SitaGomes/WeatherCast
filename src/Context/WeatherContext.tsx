@@ -7,7 +7,7 @@ var axios = require("axios").default;
 
 export function WeatherContext ({children}: ChildrenProps) {
 
-    const [cityName, setCityName] = useLocalState<string>("cityName", "Contagem")
+    const [cityName, setCityName] = useState<string>("Contagem")
 
     const [loading, setLoading] = useState(true)
 

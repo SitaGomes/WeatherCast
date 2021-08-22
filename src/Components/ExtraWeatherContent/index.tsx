@@ -8,8 +8,8 @@ const LittleExtraContent = styled.div`
 
     padding: 10px 0;
 
-    &:hover{
-        filter: brightness(200%);
+    @media only screen and (max-width: 35rem) {
+        padding: 6px 0;
     }
 `
 
@@ -29,7 +29,7 @@ export function ExtraWeatherContent({name, values}: any) {
 
             case "wind_speed":
                 name = "Wind Speed"
-                values = `${values} m/s`
+                values = `${Math.floor(values)} k/h`
                 return
 
             case "pressure":
