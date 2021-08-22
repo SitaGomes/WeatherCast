@@ -1,5 +1,12 @@
+<div align=center>
+ 
 # WeatherCast
 
+</div>
+
+<p align=center>
+ WeatherCast is a weather website that allows it's users to check any city's weather, with precise weather details.
+</p>
 
 <p align="center">
  <a href="#camera-demonstration">Demonstration</a> •
@@ -23,7 +30,7 @@
 - [X] Show the city's weather;
 - [X] Show humidity, wind pressure, cloud porcentage, etc. 
 - [X] Change theme color
-- 
+
 
 ## :electric_plug: Technologies
 * [React](https://pt-br.reactjs.org/)
