@@ -1,11 +1,38 @@
 # WeatherCast
 
+
+<p align="center">
+ <a href="#camera-demonstration">Demonstration</a> •
+ <a href="#gear-features">Features</a> •
+ <a href="#gear-technologies">Technologies</a> •
+ <a href="#computer-instalation">Instalation</a> •
+ <a href="#raising_hand_man-author">Author</a> 
+</p>
+
+
+## :camera: Demonstration
+<div align=center>
+    <img src="/Github/images/DarkMode.png">
+    <img src="/Github/images/LightMode.png">
+    <img src="/Github/images/MobileDarkMode.png">
+    <img src="/Github/images/MobileLightMode.png">
+</div>
+
 ## :gear: Features
 - [X] Search the weather by the city's name;
 - [X] Show the city's weather;
 - [X] Show humidity, wind pressure, cloud porcentage, etc. 
-- [ ] Auto complete city's name
+- [X] Change theme color
  
+
+## Technologies
+* [React](https://pt-br.reactjs.org/)
+* [React Switch] (https://www.npmjs.com/package/react-switch/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Axios] (https://www.npmjs.com/package/axios/)
+* [Styled Components](https://styled-components.com/)
+* [OpenWeatherApi](https://openweathermap.org/)
+
 ## :computer: Instalation
 ```bash
 // First clone the repository

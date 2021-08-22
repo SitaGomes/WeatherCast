@@ -1,4 +1,4 @@
-import { useState, FormEvent, useEffect} from "react";
+import { useState, FormEvent} from "react";
 import Swicth from "react-switch"
 import {
   ExtraContentContainer,
@@ -15,8 +15,9 @@ import {SunSVG} from "Components/Sun/index"
 import {useWeatherContext} from "Hooks/useWeatherContext"
 import {useThemeContext} from "Hooks/useThemeContext"
 import { useStyledThemeContext } from "Hooks/useStyledThemeContext";
+import { Loading } from "Components/Loading";
 
-var axios = require("axios").default;
+// var axios = require("axios").default;
 
 export function Home() {
 
@@ -49,7 +50,8 @@ export function Home() {
 
   }
 
-  useEffect(() => {
+  /**
+   *   useEffect(() => {
 
     const citiesApi = {
       method: 'GET',
@@ -73,6 +75,7 @@ export function Home() {
 
 
   }, [searchName])
+   */
 
 
   return (
@@ -135,7 +138,7 @@ export function Home() {
       
       {/* Temp info */}
       <TempContainer>
-        {loading ? (<div>Loading...</div>) : (
+        {loading ? (<Loading/>) : (
           <>     
             
             {wrongCityName ? (<div>City not found</div>) : (
@@ -193,7 +196,7 @@ export function Home() {
       {/* Weather Details */}
       <ExtraContentContainer>
 
-        {loading ? (<div>Loading...</div>) : (
+        {loading ? (<Loading/>) : (
           <>
 
             {wrongCityName ? (<div>City not found</div>) : (

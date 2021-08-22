@@ -18,7 +18,7 @@ export function ThemeContextProvider ({children}: ChildrenProps) {
     const ToogleTheme = useCallback(() => {
         setToogleTheme(theme.tittle === "light" ? dark : light)
 
-    }, [theme]) 
+    }, [theme, setToogleTheme]) 
     
     //! The function will run even when not called, beacuse with every render it re-creates the function
     /*
