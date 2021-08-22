@@ -1,7 +1,5 @@
 <div align=center>
- 
-# WeatherCast
-
+    <img src="Github/images/Logo.png" >
 </div>
 
 <p align=center>
@@ -60,10 +58,10 @@ $ npm start
 
 Created with ♥ by Arthur Gomes, let's chat!
 
-<a href="https://www.linkedin.com/in/arthur-sita-gomes-3683221b3/">
-    <img src="https://pt.pngtree.com/so/ícones-linkedin"/>
+<a href="https://twitter.com/ArthurSitaGomes" title="Image from freepnglogos.com">
+<img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" width="30" alt="twitter bird symbols png logo" />
 </a>
 
-<a href="https://twitter.com/ArthurSitaGomes">
-    <img src="https://pt.pngtree.com/so/ícones-twitter"/>
+<a href="https://linkedin.com/in/arthur-sita-gomes-3683221b3/" title="Image from freepnglogos.com">
+<img src="https://www.freepnglogos.com/uploads/linkedin-blue-style-logo-png-0.png" width="30" alt="linkedin blue style logo png" />
 </a>
