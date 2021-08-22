@@ -51,14 +51,17 @@ export const TodaysWeather = styled.div`
     gap: 30px;
     
     @media only screen and (max-width: 35rem) {
-        flex-direction: column;
-        gap: 0;
+        gap: 10px;
     }
 `
 
 export const MinMaxTemp = styled.div`
     text-align: center;
     font-size: 1.5rem;
+
+    @media only screen and (max-width: 35rem) {
+        font-size: 1.2rem;
+    }
 
 `
 
@@ -71,7 +74,7 @@ export const NormalTemp = styled.div`
 
     @media only screen and (max-width: 35rem) {
         .normal-temp{
-            font-size: 7rem;
+            font-size: 6rem;
         }
     }
 
