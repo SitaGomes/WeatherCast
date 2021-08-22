@@ -25,7 +25,7 @@
 - [X] Change theme color
 - 
 
-## 🔌 Technologies
+## :electric_plug: Technologies
 * [React](https://pt-br.reactjs.org/)
 * [React Switch](https://www.npmjs.com/package/react-switch/)
 * [TypeScript](https://www.typescriptlang.org/)
