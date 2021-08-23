@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import heroImage from "Assets/Images/heroImage.jpg"
+import { animated } from 'react-spring';
 
 export const HomeContainer = styled.main`
 
@@ -17,7 +18,7 @@ export const HomeContainer = styled.main`
 `
 
 //! Dark and Light Mode
-export const ToogleMode = styled.div`
+export const ToogleMode = styled(animated.div)`
     border-radius: 50%;
 
     margin: 25px 25px 0 0;
@@ -29,7 +30,7 @@ export const ToogleMode = styled.div`
 
 
 //! Main Weather info
-export const TempContainer = styled.section`
+export const TempContainer = styled(animated.section)`
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -82,7 +83,7 @@ export const NormalTemp = styled.div`
 
 //! Extra weather details
 
-export const ExtraContentContainer = styled.section`
+export const WeatherDetails = styled(animated.section)`
     max-width: 1000px;
     width: 100%;
 

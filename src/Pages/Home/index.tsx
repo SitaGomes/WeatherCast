@@ -1,27 +1,27 @@
 import { useState, FormEvent} from "react";
+import {useSpring} from "react-spring";
 import Swicth from "react-switch"
 import {
-  ExtraContentContainer,
+  WeatherDetails,
   HomeContainer, MinMaxTemp, NormalTemp, TempContainer, TodaysWeather, ToogleMode,
-
 } from "./Styles"
 
 import { ExtraWeatherContent } from "Components/ExtraWeatherContent";
 import { SearchCity } from "Components/SearchCity"
 import {MoonSVG} from "Components/Moon/index"
 import {SunSVG} from "Components/Sun/index"
+import { Loading } from "Components/Loading";
 
 
 import {useWeatherContext} from "Hooks/useWeatherContext"
 import {useThemeContext} from "Hooks/useThemeContext"
 import { useStyledThemeContext } from "Hooks/useStyledThemeContext";
-import { Loading } from "Components/Loading";
 
 // var axios = require("axios").default;
 
 export function Home() {
 
-  const [searchName, setSearchName] = useState("")
+  const [searchedName, setSearchedName] = useState("")
 
   const {colors} = useStyledThemeContext()
   const {theme, ToogleTheme} = useThemeContext()
@@ -39,16 +39,27 @@ export function Home() {
 
 
 
-  async function changeName(e: FormEvent) {
+  async function verifyCityName(e: FormEvent) {
     e.preventDefault()
     
-    if (searchName.trim() === "") return
+    if (searchedName.trim() === "") return
     
-    setSearchName("")
+    setSearchedName("")
     setLoading(true)
-    setCityName(searchName.toUpperCase())
+    setCityName(searchedName.toUpperCase())
 
   }
+
+  const fadeDown = useSpring({
+    to: {opacity: 1, y: 0},
+    from: {opacity: 0, y: -50},
+  })
+
+  const growDown = useSpring({
+    from: {width: 150 },
+    to: {width: 50}
+  })
+
 
   /**
    *   useEffect(() => {
@@ -81,7 +92,9 @@ export function Home() {
   return (
     <HomeContainer>
       {/* Dark | Light mode */}
-      <ToogleMode>
+      <ToogleMode
+        style={growDown}
+      >
         <Swicth 
           onChange={ToogleTheme}
           checked={theme.tittle === "light"}
@@ -124,20 +137,22 @@ export function Home() {
       </ToogleMode>
       
       <form
-        onSubmit={(e) => changeName(e)}
+        onSubmit={(e) => verifyCityName(e)}
       >
 
         {/* Input search */}
         <SearchCity 
           type="text"
           placeholder="Search City..."
-          onChange={(e) => setSearchName(e.target.value)}
+          onChange={(e) => setSearchedName(e.target.value)}
         />
 
       </form>
       
       {/* Temp info */}
-      <TempContainer>
+      <TempContainer
+        style={fadeDown}
+      >
         {loading ? (<Loading/>) : (
           <>     
             
@@ -194,7 +209,9 @@ export function Home() {
       </TempContainer>
 
       {/* Weather Details */}
-      <ExtraContentContainer>
+      <WeatherDetails
+        style={fadeDown}
+      >
 
         {loading ? (<Loading/>) : (
           <>
@@ -222,7 +239,7 @@ export function Home() {
           </>
         )}
         
-      </ExtraContentContainer>
+      </WeatherDetails>
     
     </HomeContainer>
   );
