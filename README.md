@@ -33,6 +33,7 @@
 ## :electric_plug: Technologies
 * [React](https://pt-br.reactjs.org/)
 * [React Switch](https://www.npmjs.com/package/react-switch/)
+* [React Spring](https://react-spring.io/)
 * [TypeScript](https://www.typescriptlang.org/)
 * [Axios](https://www.npmjs.com/package/axios/)
 * [Styled Components](https://styled-components.com/)
