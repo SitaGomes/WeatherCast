@@ -6,6 +6,7 @@ export const Global =  createGlobalStyle`
         margin: 0;
         outline: 0;
         box-sizing: border-box;
+        transition: background 300ms ease-out, color 100ms ease-out;
     }
     
     body{
