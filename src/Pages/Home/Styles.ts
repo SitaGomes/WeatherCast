@@ -58,7 +58,8 @@ export const TodaysWeather = styled.div`
 
 export const MinMaxTemp = styled.div`
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
 
     @media only screen and (max-width: 35rem) {
         font-size: 1.2rem;
