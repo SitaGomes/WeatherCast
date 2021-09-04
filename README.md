@@ -3,7 +3,7 @@
 </div>
 
 <div align=center>
-	<a href="https://weathercastt.netlify.app/">Check the Website</a>
+	<a href="https://weathercastt.netlify.app/" target="_blank" >Check the Website</a>
 </div>
 
 <p align=center>
