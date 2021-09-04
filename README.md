@@ -2,6 +2,10 @@
     <img src="Github/images/Logo.png" >
 </div>
 
+<div align=center>
+	<a href="https://weathercastt.netlify.app/">Check the Website</a>
+</div>
+
 <p align=center>
  WeatherCast is a weather website that allows it's users to check any city's weather, with precise weather details.
 </p>
@@ -14,8 +18,8 @@
  <a href="#raising_hand_man-author">Author</a> 
 </p>
 
-
 ## :camera: Demonstration
+
 <div align=center>
     <img src="/Github/images/DarkMode.png">
     <img src="/Github/images/LightMode.png">
