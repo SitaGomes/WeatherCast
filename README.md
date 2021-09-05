@@ -2,6 +2,12 @@
     <img src="Github/images/Logo.png" >
 </div>
 
+<div align=center> 
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d1bbc138-595e-4f2c-abc4-79fb90044bdf/deploy-status)](https://app.netlify.com/sites/weathercastt/deploys)
+	
+</div>
+
 <p align=center>
  WeatherCast is a weather website that allows it's users to check any city's weather, with precise weather details.
 </p>
